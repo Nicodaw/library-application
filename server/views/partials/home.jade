@@ -21,13 +21,13 @@
 				th Подзаглавие
 				th Взета
 				th Дата на връщане
-		tbody
-			td sample
-			td dasd
-			td sdadsa
-			td adsas
+		tbody(ng-repeat="book in books")
+			td {{book.id}}
+			td {{book.name}}
+			td {{book.author}}
+			td {{book.subName}}
 			td
 				input(type="checkbox" disabled="disabled")
-			td 1241
+			td {{book.returnDate | date: 'MMM d'}}
 
 	//the goddamn pagination

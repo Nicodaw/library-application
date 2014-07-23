@@ -39,35 +39,13 @@ db.on('error', function (err) {
 })
 
 
-var messageSchema = mongoose.Schema({
-	message: String
-})
-
-var Message = mongoose.model('Message', messageSchema);
-var messageFromDatabase;
-
-Message.remove({}).exec(function(err){
-	if (err) {
-		console.log('Old messages could not be cleared: '+ err);
-		return;
-	}
-	Message.create({message: 'hi from mongoose'})
-		.then(function(model) {
-		messageFromDatabase = model.message;
-	});
-
-})
-
-
-
 app.get('/partials/:partialName', function(req, res) {
 	res.render('partials/' + req.params.partialName)
 })
 
 app.get('*', function(req, res) {
-	res.render('index', {message: messageFromDatabase});
+	res.render('index');
 })
 
 app.listen(port);
 console.log("SERVER RUNNING ON PORT: "+ port);
-console.log(env);
