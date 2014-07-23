@@ -1,0 +1,21 @@
+body {
+	background-image: url(../img/lib-background.png);
+	background-repeat: repeat;
+}
+
+.image-container {
+	width: 100%;
+	height: 100%;
+}
+
+.headline {
+	text-align: center;
+}
+
+.navbar {
+	margin-bottom: 0.4%;
+}
+
+.jumbotron {
+	margin-bottom: 0.4%;
+}

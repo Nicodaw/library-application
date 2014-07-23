@@ -1,5 +1,13 @@
 extends pages/template
 block main-content
-	h2 hi from index
+	.container
+		div(class="jumbotron row")
+			div(class="col-md-6 headline")
+				h1 Библиотека
+			div(class="col-md-6")
+				img(src='../img/books-clipart.png' class="image-container")
 	div(ng-view)
-	h3= message
+
+	footer
+		p
+			small Developer Angel Simeonov 2014
