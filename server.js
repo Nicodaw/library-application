@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 
 var env = process.env.NODE_ENV || 'developement';
-var port = 5050;
+var port = process.env.PORT || 5050;
 
 var app = express();
 
@@ -14,7 +14,15 @@ app.set('views', __dirname + '/server/views');
 app.use(bodyParser());
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://localhost/library');
+if (env == 'developement') {
+
+	mongoose.connect('mongodb://localhost/library');
+} 
+else {
+	mongoose.connect('mongodb://admin:rolcaotraci@ds053109.mongolab.com:53109/libraryinventory')
+}
+
+
 var db = mongoose.connection;
 
 db.once('open', function (err) {
@@ -62,3 +70,4 @@ app.get('*', function(req, res) {
 
 app.listen(port);
 console.log("SERVER RUNNING ON PORT: "+ port);
+console.log(env);
