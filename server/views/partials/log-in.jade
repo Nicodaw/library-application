@@ -1,0 +1,27 @@
+.container
+	.navbar.navbar-default
+		button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse")
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		span.navbar-brand.glyphicon.glyphicon-hand-right
+		div(class="navbar-collapse collapse navbar-inverse-collapse")
+				ul(class="nav navbar-nav navbar-left")
+					li
+						a(href="/")Библиотека
+	.row
+		.col-md-6.jumbotron
+			form.form-horizontal
+				fieldset
+					legend Вход
+					.form-group
+						label.col-lg-2.control-label(for='imputName') Име
+						.col-lg-10
+							input.form-control(id="inputEmail" placeholder="Потребителско име" type="text" ng-model="user.username")
+					.form-group
+						label.col-lg-2.control-label(for='inputPassword') Парола
+						.col-lg-10
+							input.form-control(id="inputPassword" placeholder="Парола" type="Password" ng-model="user.password")
+					.form-group
+						.col-lg-10.col-lg-offset-2
+							button.btn.btn-success(type="submit" ng-click="login(user)") Влез	
