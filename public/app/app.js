@@ -6,11 +6,11 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 
 	$routeProvider
 		.when('/',{
-			templateUrl: '/partials/home',
+			templateUrl: '/partials/main/home',
 			controller: 'mainController'
 		})
 		.when('/log-in', {
-			templateUrl: '/partials/log-in',
+			templateUrl: '/partials/user-system/log-in',
 			controller: 'mainController'
 		})
 
