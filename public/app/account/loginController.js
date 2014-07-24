@@ -1,5 +1,15 @@
-libraryApp.controller('loginController', function($scope) {
+libraryApp.controller('loginController', function($scope, notifier, identity,auth) {
+
+	$scope.identity = identity;
+
 	$scope.login = function(user) {
-		console.log(user);
+		auth.login(user).then(function(success){
+			if (success) {
+				notifier.success("Влизането успешно!")
+			}
+			else {
+				notifier.error("Грешно Име или Парола")				
+			}
+		});
 	}
 })

@@ -10,7 +10,7 @@ module.exports = function(app, config) {
 	app.set('views', config.rootPath + '/server/views');
 	app.use(cookieParser());
 	app.use(bodyParser());
-	app.use(session());
+	app.use(session({secret: 'sloth power'}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(express.static(config.rootPath + '/public'));

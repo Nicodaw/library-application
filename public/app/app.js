@@ -1,4 +1,4 @@
-var libraryApp = angular.module('libraryApp', ['ngResource','ngRoute']);
+var libraryApp = angular.module('libraryApp', ['ngResource','ngRoute']).value('toastr', toastr);
 
 libraryApp.config(function($routeProvider, $locationProvider) {
 	// $locationProvider.html5Mode(true);

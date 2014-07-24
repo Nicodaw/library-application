@@ -10,7 +10,7 @@
 					li
 						a(href="#/") Библиотека
 	.row
-		.col-md-6.jumbotron
+		.col-md-6.jumbotron(ng-hide="identity.isAuthenticated()")
 			form.form-horizontal
 				fieldset
 					legend Вход
@@ -24,4 +24,5 @@
 							input.form-control(id="inputPassword" placeholder="Парола" type="Password" ng-model="user.password")
 					.form-group
 						.col-lg-10.col-lg-offset-2
-							button.btn.btn-success(ng-click="login(user)") Влез	
+							button.btn.btn-success(ng-click="login(user)") Влез
+		div(ng-show="identity.isAuthenticated()") {{identity.currentUser.username}}
