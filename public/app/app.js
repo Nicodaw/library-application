@@ -9,8 +9,8 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 			templateUrl: '/partials/main/home',
 			controller: 'mainController'
 		})
-		.when('/log-in', {
-			templateUrl: '/partials/user-system/log-in',
+		.when('/login', {
+			templateUrl: '/partials/account/login',
 			controller: 'mainController'
 		})
 

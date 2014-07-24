@@ -1,4 +1,4 @@
-.container
+.container(ng-controller="loginController")
 	.navbar.navbar-default
 		button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse")
 			span.icon-bar
@@ -8,7 +8,7 @@
 		div(class="navbar-collapse collapse navbar-inverse-collapse")
 				ul(class="nav navbar-nav navbar-left")
 					li
-						a(href="/")Библиотека
+						a(href="#/") Библиотека
 	.row
 		.col-md-6.jumbotron
 			form.form-horizontal
@@ -24,4 +24,4 @@
 							input.form-control(id="inputPassword" placeholder="Парола" type="Password" ng-model="user.password")
 					.form-group
 						.col-lg-10.col-lg-offset-2
-							button.btn.btn-success(type="submit" ng-click="login(user)") Влез	
+							button.btn.btn-success(ng-click="login(user)") Влез	
