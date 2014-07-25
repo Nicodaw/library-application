@@ -9,6 +9,13 @@
 				ul(class="nav navbar-nav navbar-left")
 					li
 						a(href="#/") Библиотека
+				ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+					li.dropdown
+						a.dropdown-toggle(href="" data-toggle="dropdown") {{identity.currentUser.firstName+" "+identity.currentUser.lastName}}
+							span.caret
+						ul.dropdown-menu
+							li
+								a(href="#" ng-click="logout()") Изход
 	.row
 		.col-md-6.jumbotron(ng-hide="identity.isAuthenticated()")
 			form.form-horizontal
@@ -25,4 +32,3 @@
 					.form-group
 						.col-lg-10.col-lg-offset-2
 							button.btn.btn-success(ng-click="login(user)") Влез
-		div(ng-show="identity.isAuthenticated()") {{identity.currentUser.username}}

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var passport = require('passport');
+var crypto = require('crypto');
 var LocalPassport = require('passport-local');
 
 
@@ -24,9 +25,20 @@ module.exports = function(config) {
 	var userSchema = mongoose.Schema({
 		username: String,
 		firstName: String,
-		lastName: String
-		// salt: String,
-		// hashPass: String
+		lastName: String,
+		salt: String,
+		hashPass: String
+	})
+
+	userSchema.method({
+		authenticate: function(password) {
+			if (generateHashedPassword(this.salt, password) === this.hashPass) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 	})
 
 
@@ -38,12 +50,28 @@ module.exports = function(config) {
 			return
 		}
 
-		if (collection.length === 0) {
-			User.create({username: 'angel.simeonov', firstName: 'Angel', lastName: 'Simeonov'})
-			User.create({username: 'nicodaw', firstName: 'Pesho', lastName: 'Tomov'})
-			User.create({username: 'Strahil', firstName: 'Mariq', lastName: 'Georgieva'})
+				if (collection.length === 0) {
+			var salt;
+			var hashedPwd;
+
+			salt = generateSalt();
+			hashedPwd = generateHashedPassword(salt, "angel");
+			User.create({username: 'angel.simeonov', firstName: 'Angel', lastName: 'Simeonov', salt: salt, hashPass: hashedPwd})
+
+			salt = generateSalt();
+			hashedPwd = generateHashedPassword(salt, "pesho");
+			User.create({username: 'nicodaw', firstName: 'Pesho', lastName: 'Tomov', salt: salt, hashPass: hashedPwd})
+	
+			salt = generateSalt();
+			hashedPwd = generateHashedPassword(salt, "mariq");
+			User.create({username: 'Strahil', firstName: 'Mariq', lastName: 'Georgieva', salt: salt, hashPass: hashedPwd})
+		
 			console.log('Users added to database');
 		}
+
+
+
+
 	})
 
 	passport.use(new LocalPassport(function (username, password, done){
@@ -82,5 +110,15 @@ module.exports = function(config) {
 			}
 			})
 	})
+
+};
+
+function generateSalt() {
+	return crypto.randomBytes(128).toString("base64");
+}
+
+function generateHashedPassword(salt, pwd) {
+	var hmac = crypto.createHmac('sha1', salt);
+	return hmac.update(pwd).digest('hex');
 
 };

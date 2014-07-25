@@ -1,7 +1,7 @@
-libraryApp.factory('identity', function(){
+libraryApp.factory('identity', function($window){
 	var currentUser;
 	return  {
-		currentUser: undefined,
+		currentUser: $window.bootstrappedUserObject,
 		isAuthenticated: function() {
 			return !!this.currentUser;
 		}

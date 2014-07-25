@@ -7,6 +7,7 @@ libraryApp.factory('auth', function($q,identity,$http){
 				if (response.success) {
 					identity.currentUser = response.user;
 					deferred.resolve(true);
+					console.log(response.user);
 
 				}
 				else {
@@ -17,6 +18,17 @@ libraryApp.factory('auth', function($q,identity,$http){
 
 		return deferred.promise;
 
+		},
+
+		logout: function() {
+			var deferred = $q.defer();
+
+			$http.post('/logout').success(function() {
+					identity.currentUser = undefined;
+					deferred.resolve();
+			
+			})
+			return deferred.promise;
 		}
 	};
 })

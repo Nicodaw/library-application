@@ -1,4 +1,4 @@
-libraryApp.controller('loginController', function($scope, notifier, identity,auth) {
+libraryApp.controller('loginController', function($scope, notifier, identity,auth, $location) {
 
 	$scope.identity = identity;
 
@@ -11,5 +11,15 @@ libraryApp.controller('loginController', function($scope, notifier, identity,aut
 				notifier.error("Грешно Име или Парола")				
 			}
 		});
+	}
+
+	$scope.logout = function() {
+		auth.logout().then(function() {
+				notifier.success('Излизането успешно!');
+				$scope.user.username='';
+				$scope.user.password='';
+				$location.path('/');	
+		})
+	
 	}
 })
