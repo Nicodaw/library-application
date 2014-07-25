@@ -1,13 +1,14 @@
-libraryApp.factory('auth', function($q,identity,$http){
+libraryApp.factory('auth', function($q,identity,$http, UsersResource){
 	return{
 		login: function(user) {
 			var deferred = $q.defer();
 
 			$http.post('/login', user).success(function(response) {
 				if (response.success) {
-					identity.currentUser = response.user;
+					var user = new UsersResource();
+					angular.extend(user, response.user);
+					identity.currentUser = user;
 					deferred.resolve(true);
-					console.log(response.user);
 
 				}
 				else {
@@ -29,6 +30,14 @@ libraryApp.factory('auth', function($q,identity,$http){
 			
 			})
 			return deferred.promise;
+		},
+		isAuthorizedForRole: function(role) {
+			if (identity.isAuthorizedForRole(role)) {
+					return true;
+			}
+			else {
+					return $q.reject("not authorized");
+			}
 		}
 	};
 })

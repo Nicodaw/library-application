@@ -16,8 +16,11 @@ libraryApp.controller('loginController', function($scope, notifier, identity,aut
 	$scope.logout = function() {
 		auth.logout().then(function() {
 				notifier.success('Излизането успешно!');
-				$scope.user.username='';
-				$scope.user.password='';
+				if ($scope.user) {
+					$scope.user.username='';
+					$scope.user.password='';				
+				};
+
 				$location.path('/');	
 		})
 	
