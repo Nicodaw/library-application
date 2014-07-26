@@ -19,3 +19,7 @@ body {
 .jumbotron {
 	margin-bottom: 0.4%;
 }
+
+.btn-sm {
+	margin-left: 1%;
+}

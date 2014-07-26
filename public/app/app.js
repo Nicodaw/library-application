@@ -27,6 +27,11 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 			controller: 'UserListController',
 			resolve: routeRoleChecks.admin
 		})
+		.when('/admin/signup',{
+			templateUrl: '/partials/admin/signup',
+			controller: 'SignUpController',
+			resolve: routeRoleChecks.admin
+		})
 });
 
 libraryApp.run(function($rootScope,$location) {

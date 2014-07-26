@@ -1,5 +1,18 @@
 libraryApp.factory('auth', function($q,identity,$http, UsersResource){
-	return{
+	return {
+ 	signup: function(user) {
+            var deferred = $q.defer();
+
+            var user = new UsersResource(user);
+            user.$save().then(function() {
+                identity.currentUser = user;
+                deferred.resolve();
+            }, function(response) {
+                deferred.reject(response);
+            });
+
+            return deferred.promise;
+        },
 		login: function(user) {
 			var deferred = $q.defer();
 

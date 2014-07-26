@@ -15,6 +15,8 @@
 							span.caret
 						ul.dropdown-menu
 							li(ng-show="identity.currentUser.isAdmin()")
+								a(href="#/admin/signup") Add user
+							li(ng-show="identity.currentUser.isAdmin()")
 								a(href="#/admin/users") Users
 							li
 								a(href="#" ng-click="logout()") Изход
