@@ -3,10 +3,15 @@ var libraryApp = angular.module('libraryApp', ['ngResource','ngRoute']).value('t
 libraryApp.config(function($routeProvider, $locationProvider) {
 	// $locationProvider.html5Mode(true);
 
-	var routeRoleChecks = {
-		admin: {
-			auth: function(auth) {
+	var routeUserChecks = {
+		adminRole: {
+			authenticate: function(auth) {
 				return auth.isAuthorizedForRole('admin');
+			}
+		},
+			authenticated: {
+			authenticate: function(auth) {
+				return auth.isAuthenticated();
 			}
 		}
 	};
@@ -25,12 +30,17 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 		.when('/admin/users', {
 			templateUrl: '/partials/admin/users-list',
 			controller: 'UserListController',
-			resolve: routeRoleChecks.admin
+			resolve: routeUserChecks.adminRole
+		})
+		.when('/profile',{
+			templateUrl: '/partials/account/profile',
+			controller: 'ProfileController',
+			resolve: routeUserChecks.authenticated
 		})
 		.when('/admin/signup',{
 			templateUrl: '/partials/admin/signup',
 			controller: 'SignUpController',
-			resolve: routeRoleChecks.admin
+			resolve: routeUserChecks.adminRole
 		})
 });
 

@@ -1,4 +1,4 @@
-.container(ng-controller="loginController")
+.container
 	.navbar.navbar-default
 		button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse")
 			span.icon-bar
@@ -22,8 +22,23 @@
 								a(href="#/profile") Профил
 							li
 								a(href="#" ng-click="logout()") Изход
-	.well
-		table.table
-			tr(ng-repeat="user in users")
-				td {{user.firstName}}
-				td {{user.lastName}}
+	form.form-horizontal(name='profileForm' ng-controller="ProfileController")
+		.well
+			fieldset
+				legend Профил
+				.form-group
+					label.col-lg-2.control-label(for='first-name') Име
+					.col-lg-10
+						input.form-control(placeholder="Име", type="text", ng-model="user.firstName", required)
+				.form-group
+					label.col-lg-2.control-label(for='last-name') Фамилия
+					.col-lg-10
+						input.form-control(placeholder="Фамилия", type="text", ng-model="user.lastName", required)
+				.form-group
+					label.col-lg-2.control-label(for='password') Парола
+					.col-lg-10
+						input.form-control(placeholder="Парола", type="Password", ng-model="user.password")
+				.form-group
+					.col-lg-10.col-lg-offset-2
+						button.btn.btn-success(ng-disabled="profileForm.$invalid", ng-click="update(user)") Обнови
+						a.btn-sm.btn-success(href="#/") Отказ
