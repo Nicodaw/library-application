@@ -19,7 +19,7 @@ module.exports = function() {
 				return done(null, false);
 			}
 		})
-	}));
+	});
 
 	passport.serializeUser(function(user, done) {
 		if (user) {
