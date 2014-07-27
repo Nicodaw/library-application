@@ -1,12 +1,15 @@
 var auth = require('./auth')
-var usersController = require('../controllers/usersController');
+var controllers = require('../controllers')
+
 
 module.exports = function (app){
 
 
-	app.get('/api/users', auth.isInRole('admin'), usersController.getAllUsers);
-	app.post('/api/users', auth.isInRole('admin'), usersController.createUser);
-	app.put('/api/users', auth.isAuthenticated, usersController.updateUser);
+	app.get('/api/users', auth.isInRole('admin'), controllers.users.getAllUsers);
+	app.post('/api/users', auth.isInRole('admin'), controllers.users.createUser);
+	app.put('/api/users', auth.isAuthenticated, controllers.users.updateUser);
+
+	app.get('/api/books', controllers.books.getAllBooks);
 
 	app.get('/partials/:partialArea/:partialName', function(req, res) {
 	res.render('../../public/app/' +req.params.partialArea + "/" + req.params.partialName)
@@ -15,6 +18,11 @@ module.exports = function (app){
 
 	app.post('/login', auth.login);
 	app.post('/logout', auth.logout);
+
+	app.get('/api/*', function(req,res) {
+		res.status(404);
+		res.end
+	})
 
 
 	app.get('*', function(req, res) {

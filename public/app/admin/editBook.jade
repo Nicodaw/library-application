@@ -24,28 +24,21 @@
 								a(href="#/admin/edit-book") Библиотекарски инструменти
 							li
 								a(href="#" ng-click="logout()") Изход
-
-	form.form-horizontal(name='signUpForm')
-		.well
-			fieldset
-				legend Регистрирай
-				.form-group
-					label.col-lg-2.control-label(for='first-name') Име
-					.col-lg-10
-						input.form-control(placeholder="Име", type="text", ng-model="user.firstName", required)
-				.form-group
-					label.col-lg-2.control-label(for='last-name') Фамилия
-					.col-lg-10
-						input.form-control(placeholder="Фамилия", type="text", ng-model="user.lastName", required)
-				.form-group
-					label.col-lg-2.control-label(for='username') Username
-					.col-lg-10
-						input.form-control(placeholder="Потребителско име", type="text", ng-model="user.username", required)
-				.form-group
-					label.col-lg-2.control-label(for='password') Парола
-					.col-lg-10
-						input.form-control(placeholder="Парола", type="Password", ng-model="user.password", required)
-				.form-group
-					.col-lg-10.col-lg-offset-2
-						button.btn.btn-success(ng-disabled="signUpForm.$invalid", ng-click="signup(user)") Запази
-						a.btn-sm.btn-success(href="#/") Отказ
+	table.table.table-striped
+			thead
+				tr.active
+					th #
+					th Заглавие
+					th Автор
+					th Подзаглавие
+					th Взета
+					th Дата на връщане
+			tbody
+				tr(ng-repeat="book in books | filter: search | orderBy: sort")
+					td {{book.shelf}}
+					td {{book.title}}
+					td {{book.author}}
+					td {{book.subTitle}}
+					td
+						input(type="checkbox" disabled="disabled" ng-model="book.taken")
+					td {{book.returnDate | date: 'MMM d'}}

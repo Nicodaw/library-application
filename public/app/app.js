@@ -25,7 +25,7 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 		})
 		.when('/login', {
 			templateUrl: '/partials/account/login',
-			controller: 'mainController'
+			controller: 'loginController'
 		})
 		.when('/admin/users', {
 			templateUrl: '/partials/admin/users-list',
@@ -41,6 +41,11 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 			templateUrl: '/partials/admin/signup',
 			controller: 'SignUpController',
 			resolve: routeUserChecks.adminRole
+		})
+		.when('/admin/edit-book',{
+			templateUrl: '/partials/admin/editBook',
+			controller: 'EditBookController',
+			resolve: routeUserChecks.authenticated
 		})
 });
 

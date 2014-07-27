@@ -1,4 +1,4 @@
-.container(ng-controller="loginController")
+.container
 	.navbar.navbar-default
 		button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse")
 			span.icon-bar
@@ -20,6 +20,8 @@
 								a(href="#/admin/users") Users
 							li(ng-show="identity.isAuthenticated()")
 								a(href="#/profile") Профил
+							li(ng-show="identity.isAuthenticated()")
+								a(href="#/admin/edit-book") Библиотекарски инструменти
 							li
 								a(href="#" ng-click="logout()") Изход
 

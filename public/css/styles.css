@@ -23,3 +23,7 @@ body {
 .btn-sm {
 	margin-left: 1%;
 }
+
+table tr td {
+	background-color: #fbfbfb;
+}

@@ -6,6 +6,7 @@ libraryApp.controller('loginController', function($scope, notifier, identity,aut
 		auth.login(user).then(function(success){
 			if (success) {
 				notifier.success("Влизането успешно!")
+				$location.path('/admin/edit-book');
 			}
 			else {
 				notifier.error("Грешно Име или Парола")				
