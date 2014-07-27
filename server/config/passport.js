@@ -1,11 +1,11 @@
 var passport = require('passport');
-var LocalPassport = require('passport-local');
+// var LocalPassport = require('passport-local');
 var User = require('mongoose').model('User');
 
 
 
 module.exports = function() {
-	passport.use(new LocalPassport(function (username, password, done){
+	passport.use(function (username, password, done){
 
 		User.findOne({username: username}).exec(function(err,user) {
 			if (err) {
