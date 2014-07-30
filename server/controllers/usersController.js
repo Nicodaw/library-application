@@ -31,6 +31,7 @@ module.exports = {
 				}
 
 		User.update({_id: req.body._id}, updatedUserData, function() {
+			console.log('update successful')
 			res.end();
 		})
 
