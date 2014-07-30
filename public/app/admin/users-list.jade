@@ -22,6 +22,8 @@
 								a(href="#/profile") Профил
 							li(ng-show="identity.isAuthenticated()")
 								a(href="#/admin/edit-book") Библиотекарски инструменти
+							li(ng-show="identity.isAuthenticated()")
+								a(href="#/admin/add-book") Добави книга
 							li
 								a(href="#" ng-click="logout()") Изход
 	.well

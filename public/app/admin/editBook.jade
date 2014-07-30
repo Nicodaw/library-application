@@ -5,10 +5,12 @@
 			span.icon-bar
 			span.icon-bar
 		span.navbar-brand.glyphicon.glyphicon-hand-right
-		div(class="navbar-collapse collapse navbar-inverse-collapse")
+		.navbar-collapse.collapse.navbar-inverse-collapse
 				ul(class="nav navbar-nav navbar-left")
 					li
 						a(href="#/") Библиотека
+					li
+						input.form-control.col-lg-8.input-large(type="text" placeholder="Търси" ng-model="search" id="searchForLibrarians")
 				ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
 					li.dropdown
 						a.dropdown-toggle(href="" data-toggle="dropdown") {{identity.currentUser.firstName+" "+identity.currentUser.lastName}}
@@ -22,23 +24,26 @@
 								a(href="#/profile") Профил
 							li(ng-show="identity.isAuthenticated()")
 								a(href="#/admin/edit-book") Библиотекарски инструменти
+							li(ng-show="identity.isAuthenticated()")
+								a(href="#/admin/add-book") Добави книга
 							li
 								a(href="#" ng-click="logout()") Изход
 	table.table.table-striped
 			thead
 				tr.active
-					th #
+					th Инвентарен №
 					th Заглавие
 					th Автор
 					th Подзаглавие
 					th Взета
-					th Дата на връщане
+					th Обработена
 			tbody
-				tr(ng-repeat="book in books | filter: search | orderBy: sort")
-					td {{book.shelf}}
-					td {{book.title}}
+				tr(ng-repeat="book in books | filter: search")
+					td {{book.inventoryNum}}
+					td
+						a(href="#/admin/edit-book/{{book._id}}") {{book.title}}
 					td {{book.author}}
 					td {{book.subTitle}}
 					td
 						input(type="checkbox" disabled="disabled" ng-model="book.taken")
-					td {{book.returnDate | date: 'MMM d'}}
+					td {{book.isFormated | formated}}

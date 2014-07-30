@@ -47,6 +47,16 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 			controller: 'EditBookController',
 			resolve: routeUserChecks.authenticated
 		})
+		.when('/admin/edit-book/:id',{
+			templateUrl: '/partials/admin/book-details',
+			controller: 'BookDetailsController',
+			resolve: routeUserChecks.authenticated
+		})
+		.when('/admin/add-book',{
+			templateUrl: '/partials/admin/add-book',
+			controller: 'AddBookController',
+			resolve: routeUserChecks.authenticated
+		})
 });
 
 libraryApp.run(function($rootScope,$location) {

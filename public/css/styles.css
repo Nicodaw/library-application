@@ -27,3 +27,12 @@ body {
 table tr td {
 	background-color: #fbfbfb;
 }
+
+#searchForLibrarians {
+	margin-bottom: 0;
+	margin-top: 4%;
+}
+
+.footer {
+	text-align: center;
+}

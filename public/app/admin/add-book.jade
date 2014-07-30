@@ -27,27 +27,31 @@
 							li
 								a(href="#" ng-click="logout()") Изход
 
-	form.form-horizontal(name='signUpForm')
+	form.form-horizontal(name='addBookForm')
 		.well
 			fieldset
-				legend Регистрирай
+				legend Добави книга
 				.form-group
-					label.col-lg-2.control-label(for='first-name') Име
+					label.col-lg-2.control-label(for='title') Заглавие
 					.col-lg-10
-						input.form-control(placeholder="Име", type="text", ng-model="user.firstName", required)
+						input.form-control(placeholder="Заглавие", type="text", ng-model="book.title", required)
 				.form-group
-					label.col-lg-2.control-label(for='last-name') Фамилия
+					label.col-lg-2.control-label(for='last-name') Автор
 					.col-lg-10
-						input.form-control(placeholder="Фамилия", type="text", ng-model="user.lastName", required)
+						input.form-control(placeholder="Автор", type="text", ng-model="book.author", required)
 				.form-group
-					label.col-lg-2.control-label(for='username') Username
+					label.col-lg-2.control-label(for='subTitle') Подзаглавие
 					.col-lg-10
-						input.form-control(placeholder="Потребителско име", type="text", ng-model="user.username", required)
+						input.form-control(placeholder="Подзаглавие", type="text", ng-model="book.subTitle", required)
 				.form-group
-					label.col-lg-2.control-label(for='password') Парола
+					label.col-lg-2.control-label(for='inventoryNum') Инвентарен №
 					.col-lg-10
-						input.form-control(placeholder="Парола", type="Password", ng-model="user.password", required)
+						input.form-control(placeholder="Инвентарен №", type="text", ng-model="book.inventoryNum", required)
+				.form-group
+					label.col-lg-2.control-label(for='shelf') Рафт
+					.col-lg-10
+						input.form-control(placeholder="Рафт", type="text", ng-model="book.shelf", required)
 				.form-group
 					.col-lg-10.col-lg-offset-2
-						button.btn.btn-success(ng-disabled="signUpForm.$invalid", ng-click="signup(user)") Запази
+						button.btn.btn-success(ng-disabled="addBookForm.$invalid", ng-click="addBook(book)") Запази
 						a.btn-sm.btn-success(href="#/") Отказ

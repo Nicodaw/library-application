@@ -10,6 +10,8 @@ module.exports = function (app){
 	app.put('/api/users', auth.isAuthenticated, controllers.users.updateUser);
 
 	app.get('/api/books', controllers.books.getAllBooks);
+	app.post('/api/books', auth.isAuthenticated, controllers.books.createBook);
+	app.get('/api/books/:id', controllers.books.getBookById);
 
 	app.get('/partials/:partialArea/:partialName', function(req, res) {
 	res.render('../../public/app/' +req.params.partialArea + "/" + req.params.partialName)
