@@ -43,17 +43,17 @@ libraryApp.config(function($routeProvider, $locationProvider) {
 			resolve: routeUserChecks.adminRole
 		})
 		.when('/admin/edit-book',{
-			templateUrl: '/partials/admin/editBook',
+			templateUrl: '/partials/book-information/editBook',
 			controller: 'EditBookController',
 			resolve: routeUserChecks.authenticated
 		})
 		.when('/admin/edit-book/:id',{
-			templateUrl: '/partials/admin/book-details',
+			templateUrl: '/partials/book-information/book-details',
 			controller: 'BookDetailsController',
 			resolve: routeUserChecks.authenticated
 		})
 		.when('/admin/add-book',{
-			templateUrl: '/partials/admin/add-book',
+			templateUrl: '/partials/book-information/add-book',
 			controller: 'AddBookController',
 			resolve: routeUserChecks.authenticated
 		})

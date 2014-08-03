@@ -3,6 +3,7 @@ libraryApp.controller('AddBookController', function($scope, bookFactory, $locati
 	$scope.addBook = function(book) {
 		bookFactory.addBook(book).then(function() {
 				notifier.success('Добавянето на книга е успешно!');
+				notifier.error("neshto sa iba")
 				$location.path('/');
 
 		})
