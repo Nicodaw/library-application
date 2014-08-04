@@ -36,3 +36,13 @@ table tr td {
 .footer {
 	text-align: center;
 }
+
+.taken-check {
+	padding-left: 3%;
+}
+
+@media (max-width: 1200px) {
+	.taken-check {
+		padding-bottom: 4%;
+	}
+}

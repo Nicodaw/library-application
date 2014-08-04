@@ -7,13 +7,13 @@
 		span.navbar-brand.glyphicon.glyphicon-hand-right
 		.navbar-collapse.collapse.navbar-inverse-collapse
 			form.navbar-form.navbar-left
-				select.form-control(ng-model="sort")
+				select.form-control(ng-model="sortingOrder")
 					option(value=" " ng-selected="true") Всички критерии
 					option(value="title") Заглавие
 					option(value="author") Автор
 					option(value="-subTitle") Подзаглавие
 					option(value="taken") Взета
-				input(type="text" class="form-control col-lg-8 input-large" placeholder="Търси" ng-model="search")
+				input.form-control.col-lg-8.input-large(type="text" placeholder="Търси" ng-model="query" ng-change="search()")
 			ul.nav.navbar-nav.navbar-right
 				li(ng-hide="identity.isAuthenticated()")
 					a(href="#/login") Портал за библиотекари
@@ -31,13 +31,20 @@
 				th Взета
 				th Дата на връщане
 		tbody
-			tr(ng-repeat="book in books | filter: search | orderBy: sort")
+			tr(ng-repeat="book in books")
 				td {{book.shelf}}
 				td {{book.title}}
 				td {{book.author}}
 				td {{book.subTitle}}
 				td
 					input(type="checkbox" disabled="disabled" ng-model="book.taken")
-				td {{book.returnDate | date: 'MMM d'}}
+				td {{book.returnDate | date: 'MMM d' | dateFilter}}
 
-	//the goddamn pagination
+	.pagination
+		ul.pagination.pagination-lg.text-center
+			li
+				a(href="") «
+			li
+				a(href="") 1
+			li
+				a(href="") »

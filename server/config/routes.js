@@ -12,6 +12,7 @@ module.exports = function (app){
 	app.get('/api/books', controllers.books.getAllBooks);
 	app.post('/api/books', auth.isAuthenticated, controllers.books.createBook);
 	app.get('/api/books/:id', controllers.books.getBookById);
+	app.put('/api/books', auth.isAuthenticated, controllers.books.updateBook);
 
 	app.get('/partials/:partialArea/:partialName', function(req, res) {
 	res.render('../../public/app/' +req.params.partialArea + "/" + req.params.partialName)

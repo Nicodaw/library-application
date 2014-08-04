@@ -28,5 +28,14 @@ module.exports = {
 			}
 		
 		})
+	},
+	updateBook: function(req,res,next) {
+			var updatedBookData = req.body;
+
+		Book.update({_id: req.body._id}, updatedBookData, function() {
+			console.log('update successful')
+			res.end();
+		})
+
 	}
 };
