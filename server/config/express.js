@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
 var passport = require('passport')
 
 module.exports = function(app, config) {
@@ -14,13 +13,9 @@ module.exports = function(app, config) {
 	app.use(bodyParser.urlencoded({
 	  extended: true
 	}));
-	// app.use(session({secret: 'sloth power',
-	// 				 saveUninitialized:true,
-	// 				 resave: true}));
-	app.use(session({store: new RedisStore(),
-	 secret: 'patki v maslo',
-	 saveUninitialized: true,
-	 resave: true}))
+	app.use(session({secret: 'sloth power',
+					 saveUninitialized:true,
+					 resave: true}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(express.static(config.rootPath + '/public'));
