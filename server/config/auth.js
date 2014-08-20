@@ -1,4 +1,5 @@
 var passport = require('passport');
+var http = require('http');
 
 
 module.exports = {
