@@ -1,5 +1,4 @@
-var auth = require('./auth');
-var express = require('express');
+var auth = require('./auth')
 var http = require('http');
 var controllers = require('../controllers')
 

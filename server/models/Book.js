@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-var express = require('express');
-var http = require('http');
 
 var bookSchema = mongoose.Schema({
 	seqNumber: Number,

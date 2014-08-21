@@ -1,6 +1,4 @@
 var passport = require('passport');
-var express = require('express');
-var http = require('http');
 var LocalPassport = require('passport-local');
 var User = require('mongoose').model('User');
 
