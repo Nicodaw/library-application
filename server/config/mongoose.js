@@ -24,20 +24,20 @@ module.exports = function(config) {
 	var mongooseUri = uriUtil.formatMongoose(config.db)
 	mongoose.connect(mongooseUri, options);
 
-	var db = mongoose.connection;
+// 	var db = mongoose.connection;
 
-	db.once('open', function (err) {
-		if (err) {
-			console.log("Database could not be opened: "+ err);
-			return
-		}
+// 	db.once('open', function (err) {
+// 		if (err) {
+// 			console.log("Database could not be opened: "+ err);
+// 			return
+// 		}
 
-	console.log('Database is stable...')
-})
+// 	console.log('Database is stable...')
+// })
 
-	db.on('error', function (err) {
-		console.log("Database has crashed: "+err);
-});
+// 	db.on('error', function (err) {
+// 		console.log("Database has crashed: "+err);
+// });
 
 
 	user.seedInitialUsers();
