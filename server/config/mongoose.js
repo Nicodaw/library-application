@@ -4,6 +4,7 @@ var user = require('../models/User');
 var book = require('../models/Book');
 
 module.exports = function(config) {
+	mongoose.set('debug', true);
 	mongoose.connect(config.db);
 	var db = mongoose.connection;
 
