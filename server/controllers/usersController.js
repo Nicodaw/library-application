@@ -1,4 +1,5 @@
 var encryption = require('../utilities/encryption');
+var express = require('express');
 var http = require('http');
 var User = require('mongoose').model('User');
 
