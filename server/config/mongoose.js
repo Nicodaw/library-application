@@ -1,11 +1,29 @@
 var mongoose = require('mongoose');
+var uriUtil = require('mongodb-uri');
 var http = require('http');
 var user = require('../models/User');
 var book = require('../models/Book');
 
 module.exports = function(config) {
+	var options = {
+	 server: { 
+	 	socketOptions: { 
+	 		keepAlive: 1, 
+	 		connectTimeoutMS: 30000
+	 		} 
+	 	}, 
+    replset: { 
+        socketOptions: { 
+        	keepAlive: 1,
+        	connectTimeoutMS : 30000 
+        	} 
+        } 
+    };
+
 	mongoose.set('debug', true);
-	mongoose.connect(config.db);
+	var mongooseUri = uriUtil.formatMongoose(config.db)
+	mongoose.connect(mongooseUri, options);
+
 	var db = mongoose.connection;
 
 	db.once('open', function (err) {
