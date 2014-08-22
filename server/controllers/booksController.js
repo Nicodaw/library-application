@@ -30,14 +30,28 @@ module.exports = {
 		
 		})
 	},
-	updateBook: function(req,res,next) {
-			var updatedBookData = req.body;
+	// updateBook: function(req,res,next) {
+	// 		var updatedBookData = req.body;
 
-		Book.update({_id: req.body._id}, updatedBookData, function() {
-			console.log('update successful')
-			res.end();
+	// 	Book.update({_id: req.body._id}, updatedBookData, function() {
+	// 		console.log('update successful')
+	// 		res.end();
+	// 	})
+
+	// }
+	updateBook: function(req,res) {
+		return Book.findById(req.params.id, function(err,book) {
+			book.author = req.body.author;
+			return book.save(function(err) {
+				if(!err){
+					console.log('updated');
+				}
+				else {
+					console.log(err);
+				}
+				return res.send(book);
+			})
 		})
-
 	}
 
 };

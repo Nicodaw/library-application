@@ -1,5 +1,6 @@
 var auth = require('./auth')
 var http = require('http');
+var path = require('path')
 var controllers = require('../controllers')
 
 
