@@ -1,5 +1,6 @@
 var path = require('path');
 var http = require('http');
+var mongoose = require ("mongoose");
 var rootPath = path.normalize(__dirname + '/../../')
 
 module.exports = {
@@ -12,7 +13,7 @@ module.exports = {
 
 	production: {
 		rootPath: rootPath,
-		db: 'mongodb://admin:rolcaotraci@ds053109.mongolab.com:53109/libraryinventory',
+		db: process.env.MONGOLAB_URI,
 		port: process.env.PORT || 5050
 	},
 	
