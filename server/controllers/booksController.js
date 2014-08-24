@@ -34,8 +34,12 @@ module.exports = {
 	updateBook: function(req,res,next) {
 			var updatedBookData = req.body;
 
-		return Book.update({_id: req.body._id}, updatedBookData, function() {
+		return Book.update({_id: req.body._id}, updatedBookData, function(err,book) {
+			if (err) {
+				console.log('Book could not be updated '+ err);
+			}
 			console.log('update successful')
+			res.send(book);
 			res.end();
 		})
 
