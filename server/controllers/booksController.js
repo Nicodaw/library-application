@@ -27,6 +27,7 @@ module.exports = {
 				console.log("failed to add new book "+err);
 				return;
 			}
+			res.send(book);
 		
 		})
 	},
