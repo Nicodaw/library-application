@@ -39,6 +39,22 @@ module.exports = {
 		})
 
 	}
+// 		updateBook: function(req,res,next) {
+// 			return Book.findOne({_id: req.params.id}).exec(function(err,updatedBook) {
+// 				updatedBook.title = req.body.title;
+// 				updatedBook.author = req.body.author;
+// 				return updatedBook.save(function(err) {
+// 					if(!err){
+// 						console.log('updated');
+// 					}
+// 					else {
+// 						console.log(err);
+// 					}
+// 					return res.send(updatedBook);
+// 				})
+// 			})
+// }
+		 
 	// updateBook: function(req,res) {
 	// 	return Book.findById(req.params._id, function(err,book) {
 	// 		book.author = req.body.author;
