@@ -34,13 +34,18 @@ module.exports = {
 	updateBook: function(req,res,next) {
 			var updatedBookData = req.body;
 
-		return Book.update({_id: req.body._id}, updatedBookData, function(err,book) {
+		Book.findOne({_id: req.body._id}, function(err,book) {
 			if (err) {
 				console.log('Book could not be updated '+ err);
+				return;
 			}
+			else{
+			book.author = req.body.author;
+			book.title = req.body.title;
 			console.log('update successful')
-			res.send(book);
+			book.save();
 			res.end();
+		}
 		})
 
 	}
