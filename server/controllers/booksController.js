@@ -42,6 +42,12 @@ module.exports = {
 			else{
 			book.author = req.body.author;
 			book.title = req.body.title;
+			book.subTitle = req.body.subTitle;
+			book.taken = req.body.taken;
+			book.inventoryNum = req.body.inventoryNum;
+			book.returnDate = req.body.returnDate;
+			book.isFormated = req.body.isFormated;
+			book.shelf = req.body.shelf;
 			console.log('update successful')
 			book.save();
 			res.end();

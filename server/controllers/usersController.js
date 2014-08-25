@@ -26,15 +26,23 @@ module.exports = {
 	updateUser: function(req,res,next) {
 		if (req.user._id == req.body._id || req.user.roles.indexOf('admin')> -1) {
 			var updatedUserData = req.body;
-				if (updatedUserData.password && updatedUserData.password.length > 0) {
-					updatedUserData.salt = encryption.generateSalt();
-					updatedUserData.hashPass = encryption.generateHashedPassword(updatedUserData.salt, updatedUserData.password)		
-				}
+				
 
-		User.update({_id: req.body._id}, updatedUserData, function() {
-			console.log('update successful')
-			res.end();
-		})
+			User.findOne({_id: req.body._id}, function(err,user) {
+				user.firstName = updatedUserData.firstName;
+				user.lastName = updatedUserData.lastName;
+				if (updatedUserData.password && updatedUserData.password.length > 0) {
+					user.salt = encryption.generateSalt();
+					user.hashPass = encryption.generateHashedPassword(user.salt, updatedUserData.password)		
+				}
+				user.save();
+				res.end();
+			})
+
+		// User.update({_id: req.body._id}, updatedUserData, function() {
+		// 	console.log('update successful')
+		// 	res.end();
+		// })
 
 	}
 		else {
