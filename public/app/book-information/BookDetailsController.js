@@ -3,7 +3,7 @@ libraryApp.controller('BookDetailsController', function($scope, $routeParams, Bo
 
 	$scope.update = function(book) {
 		bookFactory.update(book).then(function() {
-			$location.path('/');
+			$location.path('/admin/edit-book');
 		})
 	}
 });
