@@ -1,4 +1,4 @@
-libraryApp.factory('bookFactory', function($q,$http,BookResource, identity){
+libraryApp.factory('bookFactory', function($q,$http,BookResource, identity, DateCalculator){
 	return {
 		addBook: function(book) {
 			var deferred = $q.defer();
@@ -19,6 +19,13 @@ libraryApp.factory('bookFactory', function($q,$http,BookResource, identity){
 			var deferred = $q.defer();
 
         	var updatedBook = new BookResource(book);
+        	if (updatedBook.taken === true) {
+        		updatedBook.returnDate = DateCalculator;
+        	}
+        	else {
+        		updatedBook.returnDate = "04/08/2015"
+        	};
+
         	updatedBook.$update().then(function() {
         		deferred.resolve();
         	}, function(response) {
