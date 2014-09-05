@@ -1,4 +1,4 @@
-var libraryApp = angular.module('libraryApp', ['ngResource','ngRoute']).value('toastr', toastr);
+var libraryApp = angular.module('libraryApp', ['ngResource','ngRoute', 'angularUtils.directives.dirPagination']).value('toastr', toastr);
 
 libraryApp.config(function($routeProvider, $locationProvider) {
 	// $locationProvider.html5Mode(true);

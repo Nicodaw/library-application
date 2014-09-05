@@ -7,13 +7,15 @@
 		span.navbar-brand.glyphicon.glyphicon-hand-right
 		.navbar-collapse.collapse.navbar-inverse-collapse
 			form.navbar-form.navbar-left
-				select.form-control(ng-model="sortingOrder")
-					option(value=" " ng-selected="true") Всички критерии
-					option(value="title") Заглавие
-					option(value="author") Автор
-					option(value="-subTitle") Подзаглавие
-					option(value="taken") Взета
-				input.form-control.col-lg-8.input-large(type="text" placeholder="Търси" ng-model="query" ng-change="search()")
+				//- TODO SORTING FILTERS
+				
+				//- select.form-control(ng-model="sortingOrder")
+				//- 	option(value=" " ng-selected="true") Всички критерии
+				//- 	option(value="title") Заглавие
+				//- 	option(value="author") Автор
+				//- 	option(value="-subTitle") Подзаглавие
+				//- 	option(value="taken") Взета
+				input.form-control.col-lg-8.input-large(type="text" placeholder="Търси" ng-model="q" id="search" ng-change="search()")
 			ul.nav.navbar-nav.navbar-right
 				li(ng-hide="identity.isAuthenticated()")
 					a(href="#/login") Портал за библиотекари
@@ -31,7 +33,7 @@
 				th Взета
 				th Дата на връщане
 		tbody
-			tr(ng-repeat="book in books")
+			tr(dir-paginate="book in books | filter:q | itemsPerPage: pageSize" current-page="currentPage")
 				td {{book.shelf}}
 				td {{book.title}}
 				td {{book.author}}
@@ -39,12 +41,5 @@
 				td
 					input(type="checkbox" disabled="disabled" ng-model="book.taken")
 				td {{book.returnDate | date: 'MMM d' | dateFilter}}
-
-	.pagination
-		ul.pagination.pagination-lg.text-center
-			li
-				a(href="") «
-			li
-				a(href="") 1
-			li
-				a(href="") »
+	.pagination-centered
+		dir-pagination-controls(boundary-links="true" template-url="../../lib/angular-utils-pagination/dirPagination.tpl.html")

@@ -21,6 +21,7 @@
     "angular-resource": "~1.2.20",
     "angular-route": "~1.2.20",
     "bootstrap": "~3.2.0",
-    "toastr": "~2.0.3"
+    "toastr": "~2.0.3",
+    "angular-utils-pagination": "~0.2.4"
   }
 }
