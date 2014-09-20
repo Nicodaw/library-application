@@ -57,3 +57,8 @@ table tr td {
 	margin-top: 0;
 	padding-top: 0;
 }
+
+.btn-sm {
+	font-family: verdana;
+	font-weight: normal;
+}

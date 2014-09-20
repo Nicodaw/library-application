@@ -48,6 +48,10 @@ module.exports = {
 			book.returnDate = req.body.returnDate;
 			book.isFormated = req.body.isFormated;
 			book.shelf = req.body.shelf;
+			book.year = req.body.year;
+			book.subAuthor = req.body.subAuthor;
+			book.genre = req.body.genre;
+			book.signature = req.body.signature;
 			console.log('update successful')
 			book.save();
 			res.end();

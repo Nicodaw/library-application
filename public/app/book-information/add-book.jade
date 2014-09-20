@@ -52,6 +52,22 @@
 					.col-lg-10
 						input.form-control(placeholder="Рафт", type="text", ng-model="book.shelf", required)
 				.form-group
+					label.col-lg-2.control-label(for='year') Година
+					.col-lg-10
+						input.form-control(placeholder="Година", type="text", ng-model="book.year", required)
+				.form-group
+					label.col-lg-2.control-label(for='signature') Сигнатура
+					.col-lg-10
+						input.form-control(placeholder="Сигнатура", type="text", ng-model="book.signature", required)
+				.form-group
+					label.col-lg-2.control-label(for='subAuthor') Съавтор/и
+					.col-lg-10
+						input.form-control(placeholder="Съавтор/и", type="text", ng-model="book.subAuthor", required)
+				.form-group
+					label.col-lg-2.control-label(for='genre') Тематика
+					.col-lg-10
+						input.form-control(placeholder="Тематика", type="text", ng-model="book.genre", required)
+				.form-group
 					.col-lg-10.col-lg-offset-2
 						button.btn.btn-success(ng-disabled="addBookForm.$invalid", ng-click="addBook(book)") Запази
 						a.btn-sm.btn-success(href="#/") Отказ

@@ -29,17 +29,26 @@
 				th #
 				th Заглавие
 				th Автор
-				th Подзаглавие
 				th Взета
 				th Дата на връщане
+				
+				
 		tbody
 			tr(dir-paginate="book in books | filter:q | itemsPerPage: pageSize" current-page="currentPage")
 				td {{book.shelf}}
-				td {{book.title}}
+				td
+					.btn-group
+						a.btn.btn-sm.dropdown-toggle(data-toggle="dropdown" href="") {{book.title}}
+						span.caret
+						ul.dropdown-menu
+							li Година: {{book.year}}
+							li Съавтори: {{book.subAuthor}}
+							li Подзаглавие: {{book.subTitle}}
+							li Тематика: {{book.genre}}
 				td {{book.author}}
-				td {{book.subTitle}}
 				td
 					input(type="checkbox" disabled="disabled" ng-model="book.taken")
 				td {{book.returnDate | date: 'MMM d' | dateFilter}}
+				
 	.pagination-centered
 		dir-pagination-controls(boundary-links="true" template-url="../../lib/angular-utils-pagination/dirPagination.tpl.html")
