@@ -11,6 +11,10 @@
 						a(href="#/") Библиотека
 					li
 						input.form-control.col-lg-8.input-large(type="text" placeholder="Търси" ng-model="q" id="searchForLibrarians")
+						ul.dropdown-menu
+							li
+								a(href="") Обработена
+								a(href="") Взета
 				ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
 					li.dropdown
 						a.dropdown-toggle(href="" data-toggle="dropdown") {{identity.currentUser.firstName+" "+identity.currentUser.lastName}}
@@ -28,7 +32,7 @@
 								a(href="#/admin/add-book") Добави книга
 							li
 								a(href="#" ng-click="logout()") Изход
-	table.table.table-striped
+	table.table.table-striped.book
 			thead
 				tr.active
 					th Инвентарен №
@@ -36,9 +40,10 @@
 					th Автор
 					th Подзаглавие
 					th Взета
-					th Обработена
+					th
+						a(href="", ng-click="areaStatus = !areaStatus") Обработена
 			tbody
-				tr(dir-paginate="book in books | filter:q | itemsPerPage: pageSize" current-page="currentPage")
+				tr(dir-paginate="book in books | filter:q | itemsPerPage: pageSize | filter:{isFormated: areaStatus}" current-page="currentPage")
 					td {{book.inventoryNum}}
 					td
 						a(href="#/admin/edit-book/{{book._id}}") {{book.title}}
