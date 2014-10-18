@@ -52,6 +52,7 @@ module.exports = {
 			book.subAuthor = req.body.subAuthor;
 			book.genre = req.body.genre;
 			book.signature = req.body.signature;
+			book.price = req.body.price;
 			console.log('update successful')
 			book.save();
 			res.end();

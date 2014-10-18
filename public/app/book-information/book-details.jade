@@ -51,7 +51,7 @@
 					.col-lg-10
 						input.form-control(placeholder="Инвентарен №", type="text", ng-model="book.inventoryNum")
 				.form-group
-					label.col-lg-2.control-label(for='isFormated') Обработена
+					label.col-lg-2.control-label(for='isFormated') Необработена
 					.col-lg-10.checkbox-inline.taken-check
 						input(type="checkbox", ng-model="book.isFormated")
 				.form-group
@@ -70,6 +70,10 @@
 					label.col-lg-2.control-label(for='subAuthor') Съавтори
 					.col-lg-10
 						input.form-control(placeholder="Съавтори", type="text", ng-model="book.subAuthor")
+				.form-group
+					label.col-lg-2.control-label(for='price') Цена
+					.col-lg-10
+						input.form-control(placeholder="Цена", type="text", ng-model="book.price")
 				.form-group
 					label.col-lg-2.control-label(for='genre') Тематика
 					.col-lg-10
