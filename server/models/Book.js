@@ -8,7 +8,7 @@ var bookSchema = mongoose.Schema({
 	taken: Boolean,
 	returnDate: Date,
 	inventoryNum: String,
-	isFormated: Boolean,
+	isFormated: String,
 	shelf: String,
 	year: String,
 	genre: String,
@@ -20,7 +20,6 @@ var bookSchema = mongoose.Schema({
 
 var Book = mongoose.model("Book", bookSchema);
 module.exports.seedInitialBooks = function() {
-	// Book.remove({}, function(err) { 
 		Book.find({}).exec(function (err, collection) {
 		if (err) {
 			console.log('Cannot find books: '+ err);
@@ -38,5 +37,4 @@ module.exports.seedInitialBooks = function() {
 		}
 
 	})
-// });
 };
