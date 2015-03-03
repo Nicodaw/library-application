@@ -5,7 +5,7 @@ var http = require('http');
 
 module.exports = {
 	getAllBooks: function(req, res, next) {
-		Book.find({}).exec(function(err, collection) {
+		Book.find({}).lean().exec(function(err, collection) {
 			if (err) {
 				console.log('Books could not be loaded: '+ err);
 			}
@@ -13,7 +13,7 @@ module.exports = {
 		})
 	},
 	getBookById: function(req,res,next) {
-		Book.findOne({_id: req.params.id}).exec(function(err, book) {
+		Book.findOne({_id: req.params.id}).lean().exec(function(err, book) {
 			if (err) {
 				console.log('Book could not be loaded: '+ err);
 			}

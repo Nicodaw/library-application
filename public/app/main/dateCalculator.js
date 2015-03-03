@@ -3,7 +3,7 @@ libraryApp.factory('DateCalculator', function($http){
 	function calculator() {
 		var dateTaken = new Date();
 		var calcDate = dateTaken.getDate();
-		dateTaken.setDate(calcDate + 10);
+		dateTaken.setDate(calcDate + 20);
 		return dateTaken;
 
 	}

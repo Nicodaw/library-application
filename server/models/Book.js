@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+//var mongooseRedisCache = require('mongoose-redis-cache');
 
 var bookSchema = mongoose.Schema({
 	signature: String,
@@ -17,6 +18,8 @@ var bookSchema = mongoose.Schema({
 
 
 });
+
+//bookSchema.set('redisCache', true);
 
 var Book = mongoose.model("Book", bookSchema);
 module.exports.seedInitialBooks = function() {
